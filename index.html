@@ -772,6 +772,16 @@
                 flex-direction: column;
                 gap: 30px;
             }
+
+            @media (max-width: 768px) {
+    #menu {
+        display: none;
+        flex-direction: column;
+    }
+
+    #menu.show {
+        display: flex;
+}
             
             .mission-values {
                 flex-direction: column;
@@ -860,16 +870,6 @@
         #menu {
     display: flex;
     flex-direction: row;
-}
-
-@media (max-width: 768px) {
-    #menu {
-        display: none;
-        flex-direction: column;
-    }
-
-    #menu.show {
-        display: flex;
 }
 
     </style>
@@ -1118,8 +1118,6 @@
     hamburger.addEventListener('click', () => {
         menu.classList.toggle('show');
     });
-</script>
-
 </script>
             </div>
             <!-- Add more products here -->
