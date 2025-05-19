@@ -873,6 +873,40 @@
 }
 
     </style>
+    <head>
+  <style>
+    #menu {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      #menu {
+        display: none;
+        flex-direction: column;
+      }
+
+      #menu.show {
+        display: flex;
+      }
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
 </head>
 <!-- Sliding Announcement Bar -->
 <div class="announcement-bar">
@@ -1099,8 +1133,6 @@
         e.preventDefault();
         addToCart(button.dataset.product);
       });
-    });
-  });
 
   function addToCart(productName) {
     let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
@@ -1111,16 +1143,13 @@
     // Optional: Add more detailed cart logic here
     console.log(`Added to cart: ${productName}`);
   }
-                    <script>
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('menu');
+   <script>
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
 
-    hamburger.addEventListener('click', () => {
-        menu.classList.toggle('show');
-    });
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
 </script>
-            </div>
-            <!-- Add more products here -->
-        </div>
-    </div>
-</section>
+</body>
+
