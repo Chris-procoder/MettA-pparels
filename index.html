@@ -857,6 +857,21 @@
   border-radius: 8px;
   font-weight: bold;
 }
+        #menu {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 768px) {
+    #menu {
+        display: none;
+        flex-direction: column;
+    }
+
+    #menu.show {
+        display: flex;
+}
+
     </style>
 </head>
 <!-- Sliding Announcement Bar -->
@@ -920,8 +935,7 @@
                         <li><a href="#collection">Collection</a></li>
                         <li><a href="#shop">Shop</a></li>
                         <li><a href="bookings.html">Booking</a></li>
-                         <li><a href="cart-display">🛒>Cart<span id="cart-count">0</span></div></a></li> 
-
+                        <li><a href="cart-display">🛒 Cart <span id="cart-count">0</span></a></li>
                     </ul>
                     <button class="hamburger" id="hamburger">
                         <i class="fas fa-bars"></i>
@@ -1097,6 +1111,15 @@
     // Optional: Add more detailed cart logic here
     console.log(`Added to cart: ${productName}`);
   }
+                    <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+        menu.classList.toggle('show');
+    });
+</script>
+
 </script>
             </div>
             <!-- Add more products here -->
