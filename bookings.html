@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METT APPARELS | Booking & Contact</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #d4af37; /* Gold accent */
+            --text-color: #333333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: 1px solid var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-accent:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background-color: var(--primary-color);
+            padding: 120px 0 60px;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+        
+        .page-header h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            display: inline-flex;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .breadcrumb li:not(:last-child):after {
+            content: '/';
+            margin: 0 10px;
+            color: var(--accent-color);
+        }
+        
+        .breadcrumb a {
+            color: var(--secondary-color);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .booking-container {
+            display: flex;
+            align-items: stretch;
+            gap: 50px;
+        }
+        
+        .booking-info {
+            flex: 1;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .booking-info h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .booking-info h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .booking-info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .service-list {
+            margin: 30px 0;
+        }
+        
+        .service-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .service-icon {
+            flex: 0 0 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        
+        .service-content h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .booking-form {
+            flex: 1;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .booking-form h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .booking-form h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--medium-gray);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+        
+        select.form-control {
+            height: 46px;
+            cursor: pointer;
+        }
+        
+        textarea.form-control {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .date-time-flex {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .date-time-flex .form-group {
+            flex: 1;
+        }
+        
+        .form-check {
+            margin-top: 5px;
+        }
+        
+        .form-check input {
+            margin-right: 8px;
+        }
+        
+        .form-check label {
+            display: inline;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 40px;
+        }
+        
+        .contact-info h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .contact-info h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        .contact-text h4 {
+            color: var(--accent-color);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-form h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        /* Map Section */
+        .map-section {
+            height: 400px;
+            background-color: var(--medium-gray);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .accordion {
+            margin-top: 30px;
+        }
+        
+        .accordion-item {
+            background-color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .accordion-header {
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .accordion-header:hover {
+            color: var(--accent-color);
+        }
+        
+        .accordion-header:after {
+            content: '\f107';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: var(--transition);
+        }
+        
+        .accordion-header.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--medium-gray);
+        }
+        
+        .accordion-header.active:after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content-inner {
+            padding: 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-menu {
+            list-style: none;
+        }
+        
+        .footer-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-menu a {
+            color: var(--secondary-color);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .footer-menu a:hover {
+            color: var(--accent-color);
+        }
+        
+        .newsletter input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Calendar Styles */
+        .calendar-container {
+            margin-top: 30px;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--light-gray);
+        }
+        
+        .calendar-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .calendar-nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .calendar-nav button:hover {
+            color: var(--accent-color);
+        }
+        
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            border-bottom: 1px solid var(--medium-gray);
+            background-color: var(--light-gray);
+        }
+        
+        .weekday {
+            padding: 10px;
+        }
+        
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            text-align: center;
+        }
+        
+        .calendar-day {
+            padding: 15px 10px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--medium-gray);
+            border-right: 1px solid var(--medium-gray);
+            transition: var(--transition);
+        }
+        
+        .calendar-day:nth-child(7n) {
+            border-right: none;
+        }
+        
+        .calendar-day:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .calendar-day.current {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .calendar-day.selected {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .calendar-day.inactive {
+            color: var(--medium-gray);
+            cursor: default;
+        }
+        
+        .timeslots {
+            margin-top: 30px;
+            border: 1px solid var(--medium-gray);
+            padding: 20px;
+            display: none;
+        }
+        
+        .timeslots h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .timeslot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .timeslot {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--medium-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .timeslot:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .timeslot.selected {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-color: var(--accent-color);
+        }
+        
+        .timeslot.unavailable {
+            color: var(--medium-gray);
+            cursor: default;
+            text-decoration: line-through;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .booking-container,
+            .contact-container,
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .date-time-flex {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 10px 0;
+                text-align: center;
+            }
+            
+            nav ul li a:after {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2,
+            .booking-info h2,
+            .booking-form h2,
+            .contact-form h2,
+            .contact-info h2 {
+                font-size: 24px;
+            }
+            
+            .timeslot-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 100px 0 40px;
+            }
+            
+            .booking-info,
+            .booking-form,
+            .contact-info,
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .timeslot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Stripe Elements */
+.StripeElement {
+    box-sizing: border-box;
+    padding: 12px 15px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    background-color: white;
+}
+
+.StripeElement--invalid {
+    border-color: #dc3545;
+}
+.booking-form button[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+}
+.social-follow {
+  color: gold;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.social-follow a {
+  color: gold;
+  text-decoration: underline;
+  margin: 0 5px;
+}
+
+.social-follow a:hover {
+  color: #ffd700; /* A brighter gold on hover */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">METT APPARELS</a>
+                </div>
+                <nav>
+                    <ul id="menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#collection">Collection</a></li>
+                        <li><a href="index.html#shop">Shop</a></li>
+                        <li><a href="#booking">Booking</a></li>
+                    </ul>
+                    <button class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Booking & Contact</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Booking & Contact</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book an Appointment</h2>
+            </div>
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h2>Our Services</h2>
+                    <p>Schedule a personalized appointment with our design team. Whether you're looking for a custom piece, style consultation, or private fitting, we're here to provide an exceptional experience tailored to your needs.</p>
+                    
+                    <div class="service-list">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <div class="service-content">
+                                <h4>Custom Design Consultation</h4>
+                                <p>Meet with our design team to create a unique piece tailored to your vision and requirements.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="service-content">
+                                <h4>Private Fitting</h4>
+                                <p>Schedule a fitting session for alterations or to try on pieces from our latest collection in a private setting.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="service-content">
+                                <h4>Style Consultation</h4>
+                                <p>Work with our stylists to curate a wardrobe that complements your personal style and lifestyle.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p><strong>Note:</strong> Appointments are available Tuesday through Saturday, from 10:00 AM to 6:00 PM. Please book at least 48 hours in advance.</p>
+                    <p><Strong>Also Note:</Strong> We accept Mobile Money Transfer at 6366337959. </p>
+                    <p class="social-follow">
+
+                        Follow Mett Apparels on 
+                        <a href="https://facebook.com/yourpage" target="_blank" rel="noopener">Facebook</a>, 
+                        <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener">Instagram</a>, 
+                        <a href="https://snapchat.com/add/yourusername" target="_blank" rel="noopener">Snapchat</a>, and 
+                        <a href="https://tiktok.com/@yourusername" target="_blank" rel="noopener">TikTok</a>.
+                      </p>
+                      
+                       
+                      
+                </div>
+                
+                <div class="booking-form">
+                    <h2>Book Your Appointment</h2>
+                    <form id="appointmentForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Information *</label>
+                            <div id="card-element" class="form-control"></div>
+                            <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 8px;"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Type *</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Select a Service</option>
+                                <option value="custom-design">Custom Design Consultation</option>
+                                <option value="private-fitting">Private Fitting</option>
+                                <option value="style-consultation">Style Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <span class="calendar-title"></span>
+                                <div class="calendar-nav">
+                                    <button type="button" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                                    <button type="button" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="calendar-weekdays">
+                                <div class="weekday">Sun</div>
+                                <div class="weekday">Mon</div>
+                                <div class="weekday">Tue</div>
+                                <div class="weekday">Wed</div>
+                                <div class="weekday">Thu</div>
+                                <div class="weekday">Fri</div>
+                                <div class="weekday">Sat</div>
+                        </div>
+                            <div class="calendar-days">
+                                <div class="calendar-day">1</div>
+                                <div class="calendar-day">2</div>
+                                <div class="calendar-day">3</div>
+                                <div class="calendar-day">4</div>
+                                <div class="calendar-day">5</div>
+                                <div class="calendar-day">6</div>
+                                <div class="calendar-day">7</div>
+                                <div class="calendar-day">8</div>
+                                <div class="calendar-day">9</div>
+                                <div class="calendar-day">10</div>
+                                <div class="calendar-day">11</div>
+                                <div class="calendar-day">12</div>
+                                <div class="calendar-day">13</div>
+                                <div class="calendar-day">14</div>
+                                <div class="calendar-day">15</div>
+                                <div class="calendar-day">16</div>
+                                <div class="calendar-day">17</div>
+                                <div class="calendar-day current">18</div>
+                                <div class="calendar-day">19</div>
+                                <div class="calendar-day">20</div>
+                                <div class="calendar-day">21</div>
+                                <div class="calendar-day">22</div>
+                                <div class="calendar-day">23</div>
+                                <div class="calendar-day">24</div>
+                                <div class="calendar-day">25</div>
+                                <div class="calendar-day">26</div>
+                                <div class="calendar-day">27</div>
+                                <div class="calendar-day">28</div>
+                                <div class="calendar-day">29</div>
+                                <div class="calendar-day">30</div>
+                                <div class="calendar-day active">1</div>
+                                <div class="calendar-day active">2</div>
+                                <div class="calendar-day active">3</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeslots" id="timeslots">
+                            <h3>Available Time Slots</h3>
+                            <div class="timeslot-grid"></div>
+                            <div class="booking-form">
+                            
+                                <!-- Inside your booking-form div, after the timeslots -->
+<div class="booking-form">
+    <form id="appointmentForm">
+        <!-- All your existing form fields... -->
+        
+        <!-- Add this submit button -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-accent">
+                Complete Booking & Pay
+            </button>
+        </div>
+    </form>
+</div>
+                        </div>
+                        <script>
+                          
+    // Calendar Functionality
+    let currentDate = new Date();
+    let selectedDate = null;
+    let selectedTime = null;
+
+    function renderCalendar(date) {
+        const calendarDays = document.querySelector('.calendar-days');
+        const calendarTitle = document.querySelector('.calendar-title');
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'];
+        calendarTitle.textContent = `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
+        calendarDays.innerHTML = '';
+
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const prevLastDay = new Date(year, month, 0).getDate();
+        const firstDayIndex = firstDay.getDay();
+        const lastDayIndex = lastDay.getDay();
+        const nextDays = 7 - lastDayIndex - 1;
+
+        let days = '';
+        for (let i = firstDayIndex; i > 0; i--) {
+            days += `<div class="calendar-day inactive">${prevLastDay - i + 1}</div>`;
+        }
+        for (let i = 1; i <= lastDay.getDate(); i++) {
+            const dayDate = new Date(year, month, i);
+            const isToday = dayDate.toDateString() === new Date().toDateString();
+            days += `<div class="calendar-day${isToday ? ' current' : ''}">${i}</div>`;
+        }
+        for (let i = 1; i <= nextDays; i++) {
+            days += `<div class="calendar-day inactive">${i}</div>`;
+        }
+
+        calendarDays.innerHTML = days;
+        addDayClickHandlers();
+    }
+
+    function addDayClickHandlers() {
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.addEventListener('click', () => {
+                if (!day.classList.contains('inactive')) {
+                    document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                    day.classList.add('selected');
+                    selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), parseInt(day.textContent));
+                    showTimeSlots();
+                }
+            });
+        });
+    }
+
+    function showTimeSlots() {
+        const timeslots = document.getElementById('timeslots');
+        timeslots.style.display = 'block';
+        const slots = ['10:00 AM', '11:00 AM', '12:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
+        const slotHTML = slots.map(time =>
+            `<div class="timeslot${time === '12:00 PM' ? ' unavailable' : ''}">${time}</div>`
+        ).join('');
+        document.querySelector('.timeslot-grid').innerHTML = slotHTML;
+        addTimeSlotHandlers();
+    }
+
+    function addTimeSlotHandlers() {
+        document.querySelectorAll('.timeslot').forEach(slot => {
+            if (!slot.classList.contains('unavailable')) {
+                slot.addEventListener('click', () => {
+                    document.querySelectorAll('.timeslot').forEach(t => t.classList.remove('selected'));
+                    slot.classList.add('selected');
+                    selectedTime = slot.textContent;
+                });
+            }
+        });
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate);
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate);
+    });
+
+    // Stripe Payment Integration
+    const stripe = Stripe('pk_test_51RGmsCHJzeLoNJhHDiFRVLeMeuSYb3NirQh1kbgg4PBJ8zuZy1jSket7avNLLsbejp5rFMxU4EAmNaJGNP237Gao00Ko1dIxAP');
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    cardElement.on('change', ({ error }) => {
+        const displayError = document.getElementById('card-errors');
+        displayError.textContent = error ? error.message : '';
+    });
+
+    document.getElementById('appointmentForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!selectedDate || !selectedTime) {
+            alert('Please select a date and time');
+            return;
+        }
+
+        const submitBtn = document.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
+
+        try {const { clientSecret } = await fetch('http://localhost:3000/create-payment-intent', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ amount: 5000, currency: 'usd' })
+}).then(r => r.json());
+
+
+            const { error } = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: { card: cardElement }
+            });
+
+            if (error) throw error;
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                date: selectedDate.toISOString(),
+                time: selectedTime,
+                paymentId: clientSecret
+            };
+
+            console.log('Booking Successful:', formData);
+            alert('Payment successful! Your appointment is confirmed.');
+
+            // Reset form after success
+            document.getElementById('appointmentForm').reset();
+            selectedDate = null;
+            selectedTime = null;
+            document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+            document.getElementById('timeslots').style.display = 'none';
+
+        } catch (err) {
+            console.error('Payment failed:', err);
+            alert(`Payment failed: ${err.message}`);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Complete Booking & Pay';
+        }
+    });
+
+    // Initial calendar render
+    renderCalendar(currentDate);
+</script>
