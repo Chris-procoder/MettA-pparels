@@ -871,14 +871,19 @@
     display: flex;
     flex-direction: row;
 }
-
-    </style>
-    <head>
+<head>
   <style>
     #menu {
       display: flex;
       flex-direction: row;
       gap: 1rem;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
     }
 
     @media (max-width: 768px) {
@@ -890,16 +895,7 @@
       #menu.show {
         display: flex;
       }
-    }
 
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-    }
-
-    @media (max-width: 768px) {
       .hamburger {
         display: block;
       }
@@ -907,7 +903,6 @@
   </style>
 </head>
 
-</head>
 <!-- Sliding Announcement Bar -->
 <div class="announcement-bar">
   <div class="announcement-slider" id="announcementSlider">
@@ -963,9 +958,9 @@
                     <a href="#">METT APPARELS</a>
                 </div>
                 <nav>
-                    <ul id="menu">
+                   <ul id="menu">
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="#about">Ab out</a></li>
                         <li><a href="#collection">Collection</a></li>
                         <li><a href="#shop">Shop</a></li>
                         <li><a href="bookings.html">Booking</a></li>
@@ -974,7 +969,18 @@
                     <button class="hamburger" id="hamburger">
                         <i class="fas fa-bars"></i>
                     </button>
-                </nav>
+                    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    hamburger.addEventListener("click", function () {
+      menu.classList.toggle("show");
+    });
+  });
+</script>
+  <body/>
+               </nav>
             </div>
         </div>
     </header>
@@ -1142,14 +1148,4 @@
 
     // Optional: Add more detailed cart logic here
     console.log(`Added to cart: ${productName}`);
-  }
-   <script>
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('menu');
-
-  hamburger.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
-</script>
-</body>
-
+ 
