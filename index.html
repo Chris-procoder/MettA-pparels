@@ -846,6 +846,15 @@
                         <li><a href="bookings.html">Booking</a></li>
                         <li><a href="cart-display">🛒 Cart <span id="cart-count">0</span></a></li>
                     </ul>
+                     <script>
+    // JavaScript code to handle the hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.getElementById('menu');
+        hamburger.addEventListener('click', function() {
+            menu.classList.toggle('active');
+        });
+    </script>
                 </nav>
             </div>
         </div>
