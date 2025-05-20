@@ -6,7 +6,6 @@
     <title>METT APPARELS | Luxury Designer Fashion</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-    
         /* Global Styles */
         :root {
             --primary-color: #000000;
@@ -17,42 +16,35 @@
             --medium-gray: #e0e0e0;
             --transition: all 0.3s ease;
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-color);
             line-height: 1.6;
             background-color: var(--secondary-color);
         }
-        
         h1, h2, h3, h4, h5 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
             letter-spacing: 1px;
         }
-        
         a {
             text-decoration: none;
             color: var(--primary-color);
             transition: var(--transition);
         }
-        
         img {
             max-width: 100%;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -66,50 +58,41 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        
         .btn:hover {
             background-color: transparent;
             color: var(--primary-color);
         }
-        
         .btn-outline {
             background-color: transparent;
             color: var(--primary-color);
         }
-        
         .btn-outline:hover {
             background-color: var(--primary-color);
             color: var(--secondary-color);
         }
-        
         .btn-accent {
             background-color: var(--accent-color);
             border-color: var(--accent-color);
             color: var(--primary-color);
         }
-        
         .btn-accent:hover {
             background-color: transparent;
             color: var(--accent-color);
         }
-        
         .section {
             padding: 80px 0;
         }
-        
         .section-title {
             text-align: center;
             margin-bottom: 50px;
             position: relative;
         }
-        
         .section-title h2 {
             font-size: 32px;
             text-transform: uppercase;
             letter-spacing: 3px;
             display: inline-block;
         }
-        
         .section-title h2:after {
             content: '';
             position: absolute;
@@ -120,7 +103,6 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        
         /* Header */
         header {
             position: fixed;
@@ -132,14 +114,12 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
-        
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
         }
-        
         .logo a {
             font-family: 'Montserrat', sans-serif;
             font-size: 24px;
@@ -147,16 +127,13 @@
             letter-spacing: 3px;
             color: var(--primary-color);
         }
-        
         nav ul {
             display: flex;
             list-style: none;
         }
-        
         nav ul li {
             margin-left: 30px;
         }
-        
         nav ul li a {
             font-size: 14px;
             text-transform: uppercase;
@@ -164,7 +141,6 @@
             font-weight: 500;
             position: relative;
         }
-        
         nav ul li a:after {
             content: '';
             position: absolute;
@@ -175,10 +151,9 @@
             left: 0;
             transition: var(--transition);
         }
-        
         nav ul li a:hover:after {
             width: 100%;
-        
+        }
         .hamburger {
             display: none;
             cursor: pointer;
@@ -186,7 +161,6 @@
             border: none;
             font-size: 24px;
         }
-        
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -197,7 +171,6 @@
             align-items: center;
             position: relative;
         }
-        
         .hero:after {
             content: '';
             position: absolute;
@@ -207,43 +180,36 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.4);
         }
-        
         .hero-content {
             position: relative;
             z-index: 1;
             color: var(--secondary-color);
             max-width: 600px;
         }
-        
         .hero-content h1 {
             font-size: 48px;
             margin-bottom: 20px;
             font-weight: 300;
         }
-        
         .hero-content p {
             font-size: 18px;
             margin-bottom: 30px;
         }
-        
         /* Designer Intro */
         .designer-intro {
             display: flex;
             align-items: center;
             gap: 50px;
         }
-        
         .designer-photo {
             flex: 1;
             position: relative;
         }
-        
         .designer-photo img {
             width: 100%;
             height: auto;
             display: block;
         }
-        
         .designer-photo:after {
             content: '';
             position: absolute;
@@ -254,63 +220,52 @@
             border: 2px solid var(--accent-color);
             z-index: -1;
         }
-        
         .designer-info {
             flex: 1;
         }
-        
         .designer-info h2 {
             font-size: 36px;
             margin-bottom: 20px;
         }
-        
         .designer-info h3 {
             font-size: 18px;
             color: var(--accent-color);
             margin-bottom: 20px;
         }
-        
         .designer-info p {
             margin-bottom: 20px;
             font-size: 16px;
         }
-        
         /* Collection Gallery */
         .collection-container {
             margin-top: 30px;
         }
-        
         .collection-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
-        
         .collection-item {
             position: relative;
             overflow: hidden;
             border: 1px solid var(--medium-gray);
             transition: var(--transition);
         }
-        
         .collection-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
         .collection-img {
             position: relative;
             overflow: hidden;
             height: 400px;
         }
-        
         .collection-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-        
         .item-overlay {
             position: absolute;
             bottom: 0;
@@ -321,22 +276,18 @@
             transform: translateY(100%);
             transition: var(--transition);
         }
-        
         .collection-item:hover .item-overlay {
             transform: translateY(0);
         }
-        
         .item-overlay h3 {
             color: var(--secondary-color);
             margin-bottom: 5px;
             font-size: 18px;
         }
-        
         .item-overlay p {
             color: var(--secondary-color);
             font-size: 14px;
         }
-        
         .rotate-control {
             position: absolute;
             bottom: 20px;
@@ -352,53 +303,44 @@
             cursor: pointer;
             z-index: 2;
         }
-        
         /* Brand Story */
         .brand-story {
             background-color: var(--light-gray);
             padding: 100px 0;
         }
-        
         .story-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
-        
         .story-content h2 {
             font-size: 36px;
             margin-bottom: 30px;
         }
-        
         .story-content p {
             font-size: 18px;
             margin-bottom: 20px;
             line-height: 1.8;
         }
-        
         .mission-values {
             display: flex;
             justify-content: space-between;
             margin-top: 50px;
         }
-        
         .value-item {
             flex: 1;
             padding: 0 20px;
             text-align: center;
         }
-        
         .value-item i {
             font-size: 40px;
             color: var(--accent-color);
             margin-bottom: 20px;
         }
-        
         .value-item h3 {
             font-size: 20px;
             margin-bottom: 15px;
         }
-        
         /* Shop Section */
         .shop-filters {
             display: flex;
@@ -406,7 +348,6 @@
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
-        
         .filter-btn {
             padding: 8px 20px;
             margin: 0 10px 10px;
@@ -417,62 +358,51 @@
             font-size: 14px;
             transition: var(--transition);
         }
-        
         .filter-btn:hover, .filter-btn.active {
             background-color: var(--primary-color);
             color: var(--secondary-color);
             border-color: var(--primary-color);
         }
-        
         .shop-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
         }
-        
         .product-card {
             border: 1px solid var(--medium-gray);
             transition: var(--transition);
         }
-        
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
         .product-img {
             position: relative;
             height: 350px;
             overflow: hidden;
         }
-        
         .product-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-        
         .product-card:hover .product-img img {
             transform: scale(1.05);
         }
-        
         .product-info {
             padding: 20px;
             text-align: center;
         }
-        
         .product-info h3 {
             font-size: 18px;
             margin-bottom: 10px;
         }
-        
         .product-info p.price {
             font-size: 16px;
             color: var(--accent-color);
             margin-bottom: 15px;
         }
-        
         .add-to-cart {
             display: inline-block;
             padding: 8px 20px;
@@ -481,47 +411,38 @@
             font-size: 14px;
             transition: var(--transition);
         }
-        
         .add-to-cart:hover {
             background-color: var(--accent-color);
         }
-        
         /* Booking Section */
         .booking-section {
             background-color: var(--light-gray);
         }
-        
         .booking-container {
             display: flex;
             align-items: center;
             gap: 50px;
         }
-        
         .booking-info {
             flex: 1;
         }
-        
         .booking-info h2 {
             font-size: 36px;
             margin-bottom: 20px;
         }
-        
         .booking-info p {
             font-size: 16px;
             margin-bottom: 20px;
         }
-        
         .booking-form {
             flex: 1;
             background-color: var(--secondary-color);
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
         .form-group {
             margin-bottom: 20px;
         }
-        
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -529,7 +450,6 @@
             font-size: 14px;
             font-weight: 500;
         }
-        
         .form-control {
             width: 100%;
             padding: 10px;
@@ -537,24 +457,20 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 16px;
         }
-        
         select.form-control {
             height: 42px;
         }
-        
         /* Instagram Section */
         .instagram-feed {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 5px;
         }
-        
         .insta-item {
             position: relative;
             overflow: hidden;
             padding-bottom: 100%; /* Make it square */
         }
-        
         .insta-item img {
             position: absolute;
             top: 0;
@@ -564,11 +480,9 @@
             object-fit: cover;
             transition: var(--transition);
         }
-        
         .insta-item:hover img {
             transform: scale(1.1);
         }
-        
         .insta-overlay {
             position: absolute;
             top: 0;
@@ -582,41 +496,33 @@
             opacity: 0;
             transition: var(--transition);
         }
-        
         .insta-item:hover .insta-overlay {
             opacity: 1;
         }
-        
         .insta-overlay i {
             color: var(--secondary-color);
             font-size: 24px;
         }
-        
         /* Contact Section */
         .contact-container {
             display: flex;
             gap: 50px;
         }
-        
         .contact-info {
             flex: 1;
         }
-        
         .contact-info h3 {
             font-size: 24px;
             margin-bottom: 20px;
         }
-        
         .contact-details {
             margin-bottom: 30px;
         }
-        
         .contact-item {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
         }
-        
         .contact-item i {
             font-size: 18px;
             color: var(--accent-color);
@@ -624,12 +530,10 @@
             width: 20px;
             text-align: center;
         }
-        
         .social-links {
             display: flex;
             gap: 15px;
         }
-        
         .social-links a {
             display: flex;
             align-items: center;
@@ -641,32 +545,26 @@
             color: var(--primary-color);
             transition: var(--transition);
         }
-        
         .social-links a:hover {
             background-color: var(--accent-color);
             color: var(--secondary-color);
         }
-        
         .contact-form {
             flex: 1;
         }
-        
         .contact-form h3 {
             font-size: 24px;
             margin-bottom: 20px;
         }
-        
         /* Upload Section */
         .upload-section {
             background-color: var(--light-gray);
             text-align: center;
         }
-        
         .upload-container {
             max-width: 600px;
             margin: 0 auto;
         }
-        
         .upload-box {
             border: 2px dashed var(--medium-gray);
             padding: 40px;
@@ -675,26 +573,21 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        
         .upload-box:hover {
             border-color: var(--accent-color);
         }
-        
         .upload-box i {
             font-size: 48px;
             color: var(--accent-color);
             margin-bottom: 20px;
         }
-        
         .upload-box h3 {
             margin-bottom: 10px;
         }
-        
         .upload-box p {
             margin-bottom: 0;
             font-size: 14px;
         }
-        
         .file-input {
             position: absolute;
             top: 0;
@@ -703,61 +596,42 @@
             height: 100%;
             opacity: 0;
             cursor: pointer;
-        
-
-        footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #555;
-  background-color: #f1f1f1;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-  
+        }
         /* Footer */
         footer {
             background-color: var(--primary-color);
             color: var(--secondary-color);
             padding: 60px 0 30px;
+            text-align: center;
         }
-        
         .footer-content {
             display: flex;
             justify-content: space-between;
             margin-bottom: 40px;
         }
-        
         .footer-column {
             flex: 1;
             padding: 0 20px;
         }
-        
         .footer-column h3 {
             font-size: 18px;
             margin-bottom: 20px;
             color: var(--accent-color);
         }
-        
         .footer-menu {
             list-style: none;
         }
-        
         .footer-menu li {
             margin-bottom: 10px;
         }
-        
         .footer-menu a {
             color: var(--secondary-color);
             font-size: 14px;
             transition: var(--transition);
         }
-        
         .footer-menu a:hover {
             color: var(--accent-color);
         }
-        
         .newsletter input {
             width: 100%;
             padding: 10px;
@@ -765,14 +639,12 @@
             border: none;
             font-family: 'Cormorant Garamond', serif;
         }
-        
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
         }
-        
         /* Responsive Design */
         @media (max-width: 992px) {
             .designer-intro,
@@ -782,31 +654,26 @@
                 flex-direction: column;
                 gap: 30px;
             }
-
-            @media (max-width: 768px) {
-    #menu {
-        display: none;
-        flex-direction: column;
-    }
-
-    #menu.show {
-        display: flex;
-}
-            
+        }
+        @media (max-width: 768px) {
+            #menu {
+                display: none;
+                flex-direction: column;
+            }
+            #menu.show {
+                display: flex;
+            }
             .mission-values {
                 flex-direction: column;
                 gap: 30px;
             }
-            
             .value-item {
                 margin-bottom: 30px;
             }
-            
             .instagram-feed {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -819,177 +686,149 @@
                 padding: 20px 0;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
-            
             nav ul.show {
                 display: flex;
             }
-            
             nav ul li {
                 margin: 0;
                 padding: 10px 0;
                 text-align: center;
             }
-            
             nav ul li a:after {
                 display: none;
             }
-            
             .hamburger {
                 display: block;
             }
-            
             .hero-content h1 {
                 font-size: 36px;
             }
-            
             .section-title h2 {
                 font-size: 28px;
             }
-            
             .designer-info h2 {
                 font-size: 28px;
             }
-            
             .shop-grid,
             .collection-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
-        
         @media (max-width: 576px) {
             .instagram-feed {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
             .shop-grid,
             .collection-grid {
                 grid-template-columns: 1fr;
             }
         }
         .cart-display {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: black;
-  color: gold;
-  padding: 10px 15px;
-  border: 2px solid gold;
-  border-radius: 8px;
-  font-weight: bold;
-}
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: black;
+            color: gold;
+            padding: 10px 15px;
+            border: 2px solid gold;
+            border-radius: 8px;
+            font-weight: bold;
+        }
         #menu {
-    display: flex;
-    flex-direction: row;
-}
-<head>
-  <style>
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 1100;
-    }
-
-    #menu {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      list-style: none;
-      margin: 0;
-      padding: 1rem;
-    }
-
-    #menu li a {
-      text-decoration: none;
-      color: black;
-      font-size: 1rem;
-    }
-
-   @media (max-width: 768px) {
-  #menu {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    gap: 2rem;
-    z-index: 1000;
-    transition: all 0.3s ease-in-out;
-  }
-
-  #menu.show {
-    display: flex;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  #menu li a {
-    font-size: 1.5rem;
-  }
-
-  </style>
-
-<!-- Sliding Announcement Bar -->
-<div class="announcement-bar">
-  <div class="announcement-slider" id="announcementSlider">
-    <div class="announcement">🔥 New Collection Dropping This Friday!</div>
-    <div class="announcement">🚨 Free Shipping on Orders Over $150!</div>
-    <div class="announcement">💥 Trending: METT Signature Blazers Selling Fast!</div>
-    <div class="announcement">🛍️ Use Code "METT10" for 10% Off Your First Order!</div>
-  </div>
-</div>
-
-<style>
-  .announcement-bar {
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    overflow: hidden;
-    position: relative;
-    padding: 12px 0;
-    text-align: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-    border-bottom: 2px solid #d4af37;
-  }
-
-  .announcement-slider {
-    display: flex;
-    animation: slideAnnouncements 20s linear infinite;
-  }
-
-  .announcement {
-    min-width: 100%;
-    padding: 0 20px;
-  }
-
-  @keyframes slideAnnouncements {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-100%); }
-    50% { transform: translateX(-200%); }
-    75% { transform: translateX(-300%); }
-    100% { transform: translateX(0); }
-  }
-</style>
-
+            display: flex;
+            flex-direction: row;
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+        }
+        #menu {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 1rem;
+        }
+        #menu li a {
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            #menu {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: white;
+                gap: 2rem;
+                z-index: 1000;
+                transition: all 0.3s ease-in-out;
+            }
+            #menu.show {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            #menu li a {
+                font-size: 1.5rem;
+            }
+        }
+        /* Sliding Announcement Bar */
+        .announcement-bar {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            padding: 12px 0;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #d4af37;
+        }
+        .announcement-slider {
+            display: flex;
+            animation: slideAnnouncements 20s linear infinite;
+        }
+        .announcement {
+            min-width: 100%;
+            padding: 0 20px;
+        }
+        @keyframes slideAnnouncements {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
 <body>
-    <footer>
-  <p>All Rights Reserved Mett Apparels © 2025</p>
-</footer>
- 
+    <!-- Sliding Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-slider" id="announcementSlider">
+            <div class="announcement">🔥 New Collection Dropping This Friday!</div>
+            <div class="announcement">🚨 Free Shipping on Orders Over $150!</div>
+            <div class="announcement">💥 Trending: METT Signature Blazers Selling Fast!</div>
+            <div class="announcement">🛍️ Use Code "METT10" for 10% Off Your First Order!</div>
+        </div>
+    </div>
     <!-- Header -->
     <header>
         <div class="container">
@@ -998,8 +837,8 @@
                     <a href="#">METT APPARELS</a>
                 </div>
                 <nav>
-                <button class="hamburger">☰</button>
-                   <ul id="menu">
+                    <button class="hamburger">☰</button>
+                    <ul id="menu">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#collection">Collection</a></li>
@@ -1007,22 +846,10 @@
                         <li><a href="bookings.html">Booking</a></li>
                         <li><a href="cart-display">🛒 Cart <span id="cart-count">0</span></a></li>
                     </ul>
-                    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const menu = document.getElementById("menu");
-
-    hamburger.addEventListener("click", function () {
-      menu.classList.toggle("show");
-    });
-  });
-</script>
-  <body/>
-               </nav>
+                </nav>
             </div>
         </div>
     </header>
-
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
@@ -1033,7 +860,6 @@
             </div>
         </div>
     </section>
-
     <!-- Designer Introduction -->
     <section class="section" id="about">
         <div class="container">
@@ -1052,7 +878,6 @@
             </div>
         </div>
     </section>
-
     <!-- Collection Gallery -->
     <section class="section" id="collection">
         <div class="container">
@@ -1101,7 +926,6 @@
             </div>
         </div>
     </section>
-
     <!-- Brand Story -->
     <section class="brand-story" id="story">
         <div class="container">
@@ -1129,69 +953,70 @@
             </div>
         </div>
     </section>
-
-
-<!-- Shop Section -->
-<section class="section" id="shop">
-    <div class="container">
-        <div class="section-title">
-            <h2>Shop</h2>
-        </div>
-        <div class="shop-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="dresses">Dresses</button>
-            <button class="filter-btn" data-filter="tops">Tops</button>
-            <button class="filter-btn" data-filter="bottoms">Bottoms</button>
-            <button class="filter-btn" data-filter="accessories">Accessories</button>
-        </div>
-        <div class="shop-grid">
-            <div class="product-card" data-category="dresses">
-                <div class="product-img">
-                    <img src="/api/placeholder/350/450" alt="Product 1">
+    <!-- Shop Section -->
+    <section class="section" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop</h2>
+            </div>
+            <div class="shop-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="dresses">Dresses</button>
+                <button class="filter-btn" data-filter="tops">Tops</button>
+                <button class="filter-btn" data-filter="bottoms">Bottoms</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+            </div>
+            <div class="shop-grid">
+                <div class="product-card" data-category="dresses">
+                    <div class="product-img">
+                        <img src="/api/placeholder/350/450" alt="Product 1">
+                    </div>
+                    <div class="product-info">
+                        <h3>Silk Evening Gown</h3>
+                        <p class="price">$895</p>
+                        <button class="add-to-cart" data-product="Silk Evening Gown">Add to Cart</button>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <h3>Silk Evening Gown</h3>
-                    <p class="price">$895</p>
-                    <button class="add-to-cart" data-product="Silk Evening Gown">Add to Cart</button>
+                <div class="product-card" data-category="tops">
+                    <div class="product-img">
+                        <img src="/api/placeholder/350/450?v=2" alt="Product 2">
+                    </div>
+                    <div class="product-info">
+                        <h3>Structured Blouse</h3>
+                        <p class="price">$245</p>
+                        <button class="add-to-cart" data-product="Structured Blouse">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-            <div class="product-card" data-category="tops">
-                <div class="product-img">
-                    <img src="/api/placeholder/350/450?v=2" alt="Product 2">
-                </div>
-                <div class="product-info">
-                    <h3>Structured Blouse</h3>
-                    <p class="price">$245</p>
-                    <button class="add-to-cart" data-product="Structured Blouse">Add to Cart</button>
-                </div>
-                <script>
-  // Load saved cart count on page load
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedCount = localStorage.getItem('cartCount');
-    document.getElementById('cart-count').innerText = savedCount ? savedCount : 0;
-
-    // Bind event listeners to all add-to-cart buttons
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        addToCart(button.dataset.product);
-      });
-
-  function addToCart(productName) {
-    let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
-    cartCount++;
-    localStorage.setItem('cartCount', cartCount);
-    document.getElementById('cart-count').innerText = cartCount;
-
-    <script>
-  // Optional: Add more detailed cart logic here
-  console.log(`Added to cart: ${productName}`);
-</script>
-
-<footer>
-  <p>&copy; 2025 Chef D. Creations. All rights reserved. | <a href="/privacy">Privacy Policy</a></p>
-</footer>
-
+            <script>
+                // Load saved cart count on page load
+                document.addEventListener("DOMContentLoaded", () => {
+                    const savedCount = localStorage.getItem('cartCount');
+                    document.getElementById('cart-count').innerText = savedCount ? savedCount : 0;
+                    // Bind event listeners to all add-to-cart buttons
+                    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+                    addToCartButtons.forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            addToCart(button.dataset.product);
+                        });
+                    });
+                });
+                function addToCart(productName) {
+                    let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+                    cartCount++;
+                    localStorage.setItem('cartCount', cartCount);
+                    document.getElementById('cart-count').innerText = cartCount;
+                    // Optional: Add more detailed cart logic here
+                    console.log(`Added to cart: ${productName}`);
+                }
+            </script>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>All Rights Reserved Mett Apparels © 2025</p>
+        <p>&copy; 2025 Chef D. Creations. All rights reserved. | <a href="/privacy">Privacy Policy</a></p>
+    </footer>
 </body>
 </html>
