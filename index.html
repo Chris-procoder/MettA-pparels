@@ -873,23 +873,46 @@
 }
 <head>
   <style>
-    #menu {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-    }
-
     .hamburger {
       display: none;
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 2rem;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1100;
+    }
+
+    #menu {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    #menu li a {
+      text-decoration: none;
+      color: black;
+      font-size: 1rem;
     }
 
     @media (max-width: 768px) {
       #menu {
         display: none;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        gap: 2rem;
+        z-index: 1000;
       }
 
       #menu.show {
@@ -898,6 +921,10 @@
 
       .hamburger {
         display: block;
+      }
+
+      #menu li a {
+        font-size: 1.5rem;
       }
     }
   </style>
