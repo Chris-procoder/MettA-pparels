@@ -836,29 +836,37 @@
                 <div class="logo">
                     <a href="#">METT APPARELS</a>
                 </div>
-                <nav>
-                    <button class="hamburger">☰</button>
-                    <ul id="menu">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#collection">Collection</a></li>
-                        <li><a href="#shop">Shop</a></li>
-                        <li><a href="bookings.html">Booking</a></li>
-                        <li><a href="cart-display">🛒 Cart <span id="cart-count">0</span></a></li>
-                    </ul>
-                     <script>
-    // JavaScript code to handle the hamburger menu toggle
+               <header>
+  <div class="container">
+    <div class="nav-wrapper">
+      <nav>
+        <button class="hamburger">☰</button>
+
+        <!-- Navigation menu -->
+        <ul id="menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="bookings.html">Booking</a></li>
+          <li><a href="cart-display.html">🛒 Cart <span id="cart-count">0</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- JavaScript for menu toggle -->
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.querySelector('.hamburger');
-        const menu = document.getElementById('menu');
-        hamburger.addEventListener('click', function() {
-            menu.classList.toggle('active');
-        });
-    </script>
-                </nav>
-            </div>
-        </div>
-    </header>
+      const hamburger = document.querySelector('.hamburger');
+      const menu = document.getElementById('menu');
+      hamburger.addEventListener('click', function() {
+        menu.classList.toggle('show'); // This must match your CSS
+      });
+    });
+  </script>
+</header>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
@@ -880,7 +888,7 @@
                     <h2>Moselyn Junius</h2>
                     <h3>Creative Director & Founder</h3>
                     <p>With over 15 years of experience in the fashion industry, Moselyn Junius has established herself as one of the leading designers in contemporary luxury fashion. Her unique approach combines traditional craftsmanship with innovative design techniques.</p>
-                    <p>Inspired by architecture, nature, and cultural diversity, Alexandra creates timeless pieces that transcend seasonal trends while maintaining a distinct modern edge.</p>
+                    <p>Inspired by architecture, nature, and cultural diversity, Moselyn creates timeless pieces that transcend seasonal trends while maintaining a distinct modern edge.</p>
                     <p>"I believe fashion should empower and inspire. Each garment tells a story and creates a connection between the wearer and the craftsmanship behind it."</p>
                     <a href="#collection" class="btn">View Collection</a>
                 </div>
