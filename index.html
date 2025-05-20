@@ -909,34 +909,35 @@
       font-size: 1rem;
     }
 
-    @media (max-width: 768px) {
-      #menu {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: white;
-        gap: 2rem;
-        z-index: 1000;
-      }
+   @media (max-width: 768px) {
+  #menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    gap: 2rem;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+  }
 
-      #menu.show {
-        display: flex;
-      }
+  #menu.show {
+    display: flex;
+  }
 
-      .hamburger {
-        display: block;
-      }
+  .hamburger {
+    display: block;
+  }
 
-      #menu li a {
-        font-size: 1.5rem;
-      }
-    }
+  #menu li a {
+    font-size: 1.5rem;
+  }
+
   </style>
 
 <!-- Sliding Announcement Bar -->
@@ -997,6 +998,7 @@
                     <a href="#">METT APPARELS</a>
                 </div>
                 <nav>
+                <button class="hamburger">☰</button>
                    <ul id="menu">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
@@ -1005,9 +1007,6 @@
                         <li><a href="bookings.html">Booking</a></li>
                         <li><a href="cart-display">🛒 Cart <span id="cart-count">0</span></a></li>
                     </ul>
-                    <button class="hamburger" id="hamburger">
-                        <i class="fas fa-bars"></i>
-                    </button>
                     <script>
   document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
@@ -1185,6 +1184,14 @@
     localStorage.setItem('cartCount', cartCount);
     document.getElementById('cart-count').innerText = cartCount;
 
-    // Optional: Add more detailed cart logic here
-    console.log(`Added to cart: ${productName}`);
- 
+    <script>
+  // Optional: Add more detailed cart logic here
+  console.log(`Added to cart: ${productName}`);
+</script>
+
+<footer>
+  <p>&copy; 2025 Chef D. Creations. All rights reserved. | <a href="/privacy">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
