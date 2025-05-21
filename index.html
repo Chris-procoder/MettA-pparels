@@ -106,26 +106,40 @@
         /* Header */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
+            z-index: 999;
+            top: 55px;
+            padding: 25px 0;
         }
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+            position: relative;
+            z-index: 1;
         }
         .logo a {
             font-family: 'Montserrat', sans-serif;
             font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 3px;
             color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 3px;
+            font-weight: 500;
+            padding: 5px 10px;
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .logo a:hover {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
         }
         nav ul {
             display: flex;
@@ -746,12 +760,63 @@
     <!-- Sliding Announcement Bar -->
     <div class="announcement-bar">
         <div class="announcement-slider" id="announcementSlider">
-            <div class="announcement">🔥 New Collection Dropping This Friday!</div>
-            <div class="announcement">🚨 Free Shipping on Orders Over $150!</div>
-            <div class="announcement">💥 Trending: METT Signature Blazers Selling Fast!</div>
-            <div class="announcement">🛍️ Use Code "METT10" for 10% Off Your First Order!</div>
+            <div class="announcement"> New Collection Dropping This Friday!</div>
+            <div class="announcement"> Free Shipping on Orders Over $150!</div>
+            <div class="announcement"> Trending: METT Signature Blazers Selling Fast!</div>
+            <div class="announcement"> Use Code "METT10" for 10% Off Your First Order!</div>
         </div>
     </div>
+
+    <style>
+        .announcement-bar {
+            width: 100%;
+            background-color: #d4af37;
+            color: #000;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .announcement-slider {
+            display: flex;
+            animation: slideAnnouncements 20s linear infinite;
+            height: 100%;
+            background: linear-gradient(to right, #d4af37, #ffde00);
+        }
+
+        .announcement {
+            min-width: 100%;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .announcement i {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        @keyframes slideAnnouncements {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
+
+        .announcement-slider {
+            animation: slideAnnouncements 40s linear infinite;
+        }
+    </style>
     <!-- Header -->
     <header>
         <div class="container">
@@ -760,7 +825,6 @@
                     <a href="#">METT APPARELS</a>
                 </div>
                 <button class="hamburger">☰</button>
-                <!-- Navigation menu -->
                 <nav>
                     <ul id="menu">
                         <li><a href="#home">Home</a></li>
@@ -774,16 +838,80 @@
             </div>
         </div>
     </header>
+
     <!-- JavaScript for menu toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.querySelector('.hamburger');
             const menu = document.getElementById('menu');
             hamburger.addEventListener('click', function () {
-                menu.classList.toggle('show'); // Toggle the menu visibility
+                menu.classList.toggle('show');
+                this.classList.toggle('active');
             });
         });
     </script>
+
+    <style>
+        /* Mobile Menu Styles */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        #menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            #menu {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--secondary-color);
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            #menu.show {
+                display: flex;
+            }
+
+            #menu li {
+                width: 100%;
+            }
+
+            #menu li a {
+                display: block;
+                padding: 10px 0;
+                text-align: center;
+                border-bottom: 1px solid var(--medium-gray);
+            }
+
+            #menu li a:last-child {
+                border-bottom: none;
+            }
+
+            .hamburger.active {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
@@ -949,8 +1077,115 @@
     </section>
     <!-- Footer -->
     <footer>
-        <p>All Rights Reserved — Mett Apparels © 2025</p>
-        <p>&copy; 2025 Moselyn Junius. Creations. All rights reserved. | <a href="privacy.html" style="color: blue;">Privacy Policy</a></p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mett Apparels</h3>
+                    <p>© 2025 Moselyn Junius. Creations. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>Email: info@mettapparels.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>All Rights Reserved — Mett Apparels © 2025</p>
+                <p><a href="privacy.html" style="color: blue;">Privacy Policy</a></p>
+            </div>
+        </div>
     </footer>
+
+    <style>
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .footer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-menu li {
+            margin-bottom: 10px;
+        }
+
+        .footer-menu a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--medium-gray);
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .footer-column {
+                flex: none;
+                width: 100%;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
 </body>
 </html>
