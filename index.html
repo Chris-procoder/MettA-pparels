@@ -112,7 +112,7 @@
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
             z-index: 999;
-            top: 55px;
+            top: 35px;
             padding: 25px 0;
         }
 
@@ -780,12 +780,17 @@
             position: fixed;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
+            padding: 8px 0;
             text-align: center;
             font-weight: bold;
-            font-size: 16px;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .announcement-bar {
+                padding: 5px 0;
+                font-size: 12px;
+            }
         }
 
         .announcement-slider {
