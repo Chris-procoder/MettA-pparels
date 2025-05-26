@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METT APPARELS | Blog</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #d4af37;
+            --text-color: #333333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .blog-header {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .blog-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .blog-card {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .blog-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .blog-content .meta {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .trending-section {
+            padding: 60px 0;
+            background: var(--light-gray);
+        }
+
+        .trending-section h2 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .trending-item {
+            background: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .trending-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .blog-header h1 {
+                font-size: 36px;
+            }
+
+            .blog-grid,
+            .trending-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">METT APPARELS</a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collection</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="blog-header">
+        <h1>Latest Fashion Insights</h1>
+        <p>Stay updated with the latest trends and fashion insights from METT APPARELS</p>
+    </section>
+
+    <section class="blog-grid">
+        <article class="blog-card">
+            <img src="https://images.unsplash.com/photo-1530023737376-8c5591381921" alt="Spring 2025 Trends">
+            <div class="blog-content">
+                <h3>Spring 2025 Fashion Trends</h3>
+                <p>Discover the latest fashion trends for Spring 2025, featuring bold prints and vibrant colors.</p>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> May 23, 2025
+                    <i class="fas fa-user"></i> METT APPARELS
+                </div>
+            </div>
+        </article>
+
+        <article class="blog-card">
+            <img src="https://images.unsplash.com/photo-1530023737376-8c5591381921" alt="Sustainable Fashion">
+            <div class="blog-content">
+                <h3>Sustainable Fashion: The Future of Luxury</h3>
+                <p>Learn how METT APPARELS is leading the way in sustainable luxury fashion.</p>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> May 20, 2025
+                    <i class="fas fa-user"></i> METT APPARELS
+                </div>
+            </div>
+        </article>
+
+        <article class="blog-card">
+            <img src="https://images.unsplash.com/photo-1530023737376-8c5591381921" alt="Designer Spotlight">
+            <div class="blog-content">
+                <h3>Designer Spotlight: Meet Our Creative Team</h3>
+                <p>Get to know the talented designers behind METT APPARELS.</p>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> May 15, 2025
+                    <i class="fas fa-user"></i> METT APPARELS
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="trending-section">
+        <div class="container">
+            <h2>Trending Now</h2>
+            <div class="trending-grid">
+                <div class="trending-item">
+                    <h3>Gold Accents</h3>
+                    <p>Our signature gold accents are making waves in the fashion world.</p>
+                </div>
+                <div class="trending-item">
+                    <h3>Sustainable Materials</h3>
+                    <p>Discover our eco-friendly fabric choices and production methods.</p>
+                </div>
+                <div class="trending-item">
+                    <h3>Custom Designs</h3>
+                    <p>Learn about our bespoke design services for exclusive pieces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>METT APPARELS</h3>
+                    <p>Luxury fashion with a sustainable conscience.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="collection.html">Collection</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@mettapparels.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 METT APPARELS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
