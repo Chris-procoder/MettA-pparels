@@ -1,4 +1,8 @@
-// server.js (Node.js with Express)
+SENDGRID_API_KEY=your_sendgrid_api_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_CLIENT_EMAIL=your_service_account_email
+FIREBASE_PRIVATE_KEY=your_private_key// server.js (Node.js with Express)
 const express = require('express');
 const app = express();
 const Stripe = require('stripe');
