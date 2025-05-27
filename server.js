@@ -1,13 +1,43 @@
 require('dotenv').config();
 const express = require('express');
-const sgMail = require('@sendgrid/mail');
+const stripe = require('stripe')('your-secret-key'); // Use your Stripe secret key
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const admin = require('firebase-admin');
+const { getAuth } = require('firebase-admin/auth');
+const sgMail = require('@sendgrid/mail');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { body, validationResult } = require('express-validator');
 
+// Initialize Firebase Admin
+admin.initializeApp({
+    credential: admin.credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY
+    })
+});
+
+// Authentication middleware
+const authMiddleware = (req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+        return res.status(401).json({ error: 'No token provided' });
+    }
+
+    try {
+        const decodedToken = admin.auth().verifyIdToken(token);
+        req.user = decodedToken;
+        next();
+    } catch (error) {
+        return res.status(401).json({ error: 'Invalid token' });
+    }
+};
+
 const app = express();
+const port = 3000;
 
 // Security middleware
 app.use(helmet());
